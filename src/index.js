@@ -9,6 +9,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 const reducer = combineReducers({
   // here we will be adding reducers
 })
+// Working example for configureStore: https://codesandbox.io/s/redux-toolkit-configurestore-listener-middleware-forking-m7lduu?from-embed=&file=/src/store.js:1111-1214
 const store = configureStore({
   reducer,
   middleware: (getDefaultMiddleware) =>
