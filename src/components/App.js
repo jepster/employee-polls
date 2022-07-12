@@ -1,6 +1,5 @@
 import { useEffect, Fragment } from "react";
 import { connect } from "react-redux";
-import LoadingBar from "react-redux-loading-bar";
 import { Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Nav from "./Nav";
@@ -13,7 +12,6 @@ const App = (props) => {
 
   return (
     <Fragment>
-      <LoadingBar />
       <div className="container">
         hi!
         <Nav />

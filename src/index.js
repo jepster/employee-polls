@@ -1,13 +1,19 @@
-// import {configureStore} from "@reduxjs/toolkit";
+ import {configureStore} from "@reduxjs/toolkit";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
-import { createStore } from "redux";
+import { combineReducers } from 'redux'
 import { Provider } from "react-redux";
-import middleware from "./middleware";
 import { BrowserRouter as Router } from "react-router-dom";
-import reducer from "./reducers";
-const store = createStore(reducer, middleware);
+ import logger from "./middleware/logger";
+const reducer = combineReducers({
+  // here we will be adding reducers
+})
+const store = configureStore({
+  reducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().prepend(logger)
+})
 
 ReactDOM.render(
   <Provider store={store}>
