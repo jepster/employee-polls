@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import Nav from "./Nav";
 import {handleInitialData} from "../actions/shared";
+import {Dashboard} from "./Dashboard";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = (props) => {
   useEffect(() => {
@@ -18,6 +20,7 @@ const App = (props) => {
         {props.loading === true ? null : (
           <Routes>
             <Route path="/" exact element={<Login />} />
+            <Route path="/dashboard" exact element={<Dashboard />} />
           </Routes>
         )}
       </div>
