@@ -1,8 +1,13 @@
 import { connect } from "react-redux";
 import {useNavigate} from "react-router-dom";
-import { Button } from 'reactstrap';
+import {Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
+import {useState} from "react";
 
 const Login = ({ dispatch }) => {
+  const [state, setState] = useState({
+    dropdownOpen: false,
+    selectedUser: 'Select user'
+  });
   const navigate = useNavigate();
   const setUserSignedIn = (e) => {
     e.preventDefault();
@@ -10,19 +15,34 @@ const Login = ({ dispatch }) => {
     navigate("/dashboard");
   };
 
+  const toggle = (option) => {
+    let selectedUser = 'Select user';
+    if (option.target.innerText !== 'Select user') {
+      selectedUser = option.target.innerText;
+    }
+    setState({dropdownOpen: !state.dropdownOpen, selectedUser: selectedUser});
+  };
+
   return (
     <div>
       <h2>Sign in</h2>
       <form>
         <label>User</label>
-        <input type="text" name="user" />
+        <Dropdown>
+          <Dropdown isOpen={state.dropdownOpen} toggle={toggle}>
+            <DropdownToggle caret>
+              {state.selectedUser}
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem>Sylvester Stallone</DropdownItem>
+              <DropdownItem>Bruce Willis</DropdownItem>
+              <DropdownItem>Tom Cruise</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </Dropdown>
         <label>Password</label>
         <input type="password" name="password" />
-        <Button color="danger">Danger!</Button>
-
-        <button className="btn" type="submit" onClick={setUserSignedIn}>
-          Submit
-        </button>
+        <Button color="primary" onClick={setUserSignedIn}>Submit</Button>
       </form>
     </div>
   );
