@@ -6,13 +6,20 @@ import {useState} from "react";
 const Login = ({ dispatch }) => {
   const [state, setState] = useState({
     dropdownOpen: false,
-    selectedUser: 'Select user'
+    selectedUser: 'Select user',
+    password: '',
+    showPasswordWarning: false,
   });
   const navigate = useNavigate();
   const setUserSignedIn = (e) => {
     e.preventDefault();
 
-    navigate("/dashboard");
+    if (state.password !== '') {
+      navigate("/dashboard");
+      setState({...state, showPasswordWarning: false});
+    } else {
+      setState({...state, showPasswordWarning: true});
+    }
   };
 
   const toggle = (option) => {
@@ -23,9 +30,20 @@ const Login = ({ dispatch }) => {
     setState({dropdownOpen: !state.dropdownOpen, selectedUser: selectedUser});
   };
 
+  const setPassword = (password) => {
+    setState({...state, password: password});
+  }
+
   return (
     <div className="container">
       <h2>Sign in</h2>
+
+      {state.showPasswordWarning ? (
+        <div className="alert alert-danger" role="alert">
+          Please enter a password.
+        </div>
+      ) : ''}
+
       <form>
         <label>User</label>
         <div className="row">
@@ -45,7 +63,7 @@ const Login = ({ dispatch }) => {
         <div className="row pt-3">
           <label>Password (insert any you like)</label>
         </div>
-        <input type="password" name="password" />
+        <input type="password" name="password" autoComplete="new-password" onChange={setPassword} />
         <div className="row pt-3">
           <div className="col-2">
             <Button color="primary" onClick={setUserSignedIn}>Submit</Button>
@@ -55,9 +73,5 @@ const Login = ({ dispatch }) => {
     </div>
   );
 }
-
-const mapStateToProps = ({ userSignedIn }) => ({
-  userSignedIn: userSignedIn,
-});
 
 export default connect()(Login);
