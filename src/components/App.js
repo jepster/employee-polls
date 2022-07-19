@@ -17,12 +17,10 @@ const App = (props) => {
       <div className="container">
         hi!
         <Nav />
-        {props.loading === true ? null : (
           <Routes>
             <Route path="/" exact element={<Login />} />
             <Route path="/dashboard" exact element={<Dashboard />} />
           </Routes>
-        )}
       </div>
     </Fragment>
   );

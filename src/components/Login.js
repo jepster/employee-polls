@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
 import {useState} from "react";
+import {setAuthedUser} from "../actions/authedUser";
 
 const Login = ({ dispatch }) => {
   const [state, setState] = useState({
@@ -17,6 +18,7 @@ const Login = ({ dispatch }) => {
     if (state.password !== '') {
       navigate("/dashboard");
       setState({...state, showPasswordWarning: false});
+      dispatch(setAuthedUser(state.selectedUser));
     } else {
       setState({...state, showPasswordWarning: true});
     }
