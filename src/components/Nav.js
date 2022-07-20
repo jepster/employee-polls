@@ -11,7 +11,7 @@ const Nav = () => {
           <Link to="/">Leaderboard</Link>
         </li>
         <li>
-          <Link to="/new">New</Link>
+          <Link to="/new-poll">New poll</Link>
         </li>
       </ul>
     </nav>

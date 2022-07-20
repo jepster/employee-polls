@@ -1,11 +1,12 @@
-import { useEffect, Fragment } from "react";
-import { connect } from "react-redux";
-import { Routes, Route } from "react-router-dom";
+import {useEffect, Fragment} from "react";
+import {connect} from "react-redux";
+import {Routes, Route} from "react-router-dom";
 import Login from "./Login";
 import Nav from "./Nav";
 import {handleInitialData} from "../actions/shared";
 import {Dashboard} from "./Dashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NewPoll from "./NewPoll";
 
 const App = (props) => {
   useEffect(() => {
@@ -15,18 +16,18 @@ const App = (props) => {
   return (
     <Fragment>
       <div className="container">
-        hi!
-        <Nav />
-          <Routes>
-            <Route path="/" exact element={<Login />} />
-            <Route path="/dashboard" exact element={<Dashboard />} />
-          </Routes>
+        <Nav/>
+        <Routes>
+          <Route path="/" exact element={<Login/>}/>
+          <Route path="/dashboard" exact element={<Dashboard/>}/>
+          <Route path="/new-poll" exact element={<NewPoll/>}/>
+        </Routes>
       </div>
     </Fragment>
   );
 };
 
-const mapStateToProps = ({ authedUser }) => ({
+const mapStateToProps = ({authedUser}) => ({
   loading: authedUser === null,
 });
 

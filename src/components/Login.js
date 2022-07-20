@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
 import {useState} from "react";
-import {setAuthedUser} from "../actions/authedUser";
+import {setAuthedUser} from "../actions/authedUserAction";
 
 const Login = ({ dispatch }) => {
   const [state, setState] = useState({
