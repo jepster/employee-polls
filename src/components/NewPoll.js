@@ -26,7 +26,7 @@ const NewPoll = (props) => {
     const poll = {
       firstOption: firstOption,
       secondOption: secondOption,
-      username: state.authedUser,
+      author: state.authedUser,
     };
 
     props.dispatch(addPoll(poll));
