@@ -34,7 +34,10 @@ const NewPoll = (props) => {
 
   return (
     <>
-      <h3 className="center">Compose new Poll</h3>
+      <h3 className="center">Would You Rather</h3>
+      <p>
+        Create Your Own Poll
+      </p>
       <form className="new-tweet" onSubmit={handleSubmit}>
         <input type="text" name="first_option" placeholder="First option" />
         <input type="text" name="second_option" placeholder="Second option" />
@@ -44,9 +47,5 @@ const NewPoll = (props) => {
   );
 
 }
-
-// const mapStateToProps = (store) => ({
-//   authedUser: store.authedUser,
-// });
 
 export default connect()(NewPoll);
