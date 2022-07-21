@@ -1,5 +1,246 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`App check if we have login form 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="container"
+      >
+        <h2>
+          Sign in
+        </h2>
+        <form>
+          <label>
+            User
+          </label>
+          <div
+            class="row"
+          >
+            <div
+              class="dropdown"
+            >
+              <div
+                class="dropdown"
+              >
+                <button
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  class="dropdown-toggle btn btn-secondary"
+                  type="button"
+                >
+                  Select user
+                </button>
+                <div
+                  aria-hidden="true"
+                  class="dropdown-menu"
+                  role="menu"
+                  tabindex="-1"
+                >
+                  <button
+                    class="dropdown-item"
+                    role="menuitem"
+                    tabindex="0"
+                    type="button"
+                  >
+                    Sylvester Stallone
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    role="menuitem"
+                    tabindex="0"
+                    type="button"
+                  >
+                    Bruce Willis
+                  </button>
+                  <button
+                    class="dropdown-item"
+                    role="menuitem"
+                    tabindex="0"
+                    type="button"
+                  >
+                    Tom Cruise
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="row pt-3"
+          >
+            <label>
+              Password (insert any you like)
+            </label>
+          </div>
+          <input
+            autocomplete="new-password"
+            name="password"
+            type="password"
+          />
+          <div
+            class="row pt-3"
+          >
+            <div
+              class="col-2"
+            >
+              <button
+                class="btn btn-primary"
+                type="button"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="container"
+    >
+      <h2>
+        Sign in
+      </h2>
+      <form>
+        <label>
+          User
+        </label>
+        <div
+          class="row"
+        >
+          <div
+            class="dropdown"
+          >
+            <div
+              class="dropdown"
+            >
+              <button
+                aria-expanded="false"
+                aria-haspopup="true"
+                class="dropdown-toggle btn btn-secondary"
+                type="button"
+              >
+                Select user
+              </button>
+              <div
+                aria-hidden="true"
+                class="dropdown-menu"
+                role="menu"
+                tabindex="-1"
+              >
+                <button
+                  class="dropdown-item"
+                  role="menuitem"
+                  tabindex="0"
+                  type="button"
+                >
+                  Sylvester Stallone
+                </button>
+                <button
+                  class="dropdown-item"
+                  role="menuitem"
+                  tabindex="0"
+                  type="button"
+                >
+                  Bruce Willis
+                </button>
+                <button
+                  class="dropdown-item"
+                  role="menuitem"
+                  tabindex="0"
+                  type="button"
+                >
+                  Tom Cruise
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="row pt-3"
+        >
+          <label>
+            Password (insert any you like)
+          </label>
+        </div>
+        <input
+          autocomplete="new-password"
+          name="password"
+          type="password"
+        />
+        <div
+          class="row pt-3"
+        >
+          <div
+            class="col-2"
+          >
+            <button
+              class="btn btn-primary"
+              type="button"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
 exports[`App should render the component 1`] = `
 Object {
   "asFragment": [Function],
