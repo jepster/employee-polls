@@ -1,4 +1,4 @@
-import {ADD_POLL} from "../actions/pollAction";
+import {ADD_ALL_POLLS, ADD_POLL} from "../actions/pollAction";
 
 export default function pollReducer(state = {}, action) {
   switch (action.type) {
@@ -13,6 +13,11 @@ export default function pollReducer(state = {}, action) {
       return {
         ...state,
         polls: [action.poll],
+      }
+    case ADD_ALL_POLLS:
+      return {
+        ...state,
+        polls: action.polls.flat(),
       }
     default:
       console.log('Action type: ' + action.type);

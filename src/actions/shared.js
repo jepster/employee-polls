@@ -1,4 +1,4 @@
-import {addPoll} from "./pollAction";
+import {addAllPolls, addPoll} from "./pollAction";
 
 export function handleInitialData() {
   return (dispatch) => {
@@ -33,8 +33,7 @@ export function handleInitialData() {
       }
     ];
 
-    pollsInitial.forEach((poll) => {
-      dispatch(addPoll(poll));
-    });
+    dispatch(addAllPolls(pollsInitial));
+
   };
 }
