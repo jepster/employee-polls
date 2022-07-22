@@ -4,10 +4,11 @@ export default function pollReducer(state = {}, action) {
   switch (action.type) {
     case ADD_POLL:
       if (Array.isArray(state.polls) && state.polls.length > 0) {
-        return {
+        state = {
           ...state,
           polls: state.polls.concat(action.poll),
         }
+        return state.polls.flat();
       }
       return {
         ...state,

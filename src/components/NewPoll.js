@@ -8,11 +8,11 @@ const NewPoll = (props) => {
   const navigate = useNavigate();
   const { store } = useContext(ReactReduxContext)
   const state = store.getState();
-  useEffect(() => {
-    if (state.authedUser === null) {
-      navigate("/");
-    }
-  });
+  // useEffect(() => {
+  //   if (state.authedUser === null) {
+  //     navigate("/");
+  //   }
+  // });
 
   const handleSubmit = (e) => {
     e.preventDefault();

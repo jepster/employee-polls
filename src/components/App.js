@@ -4,14 +4,15 @@ import {Routes, Route} from "react-router-dom";
 import Login from "./Login";
 import Nav from "./Nav";
 import {handleInitialData} from "../actions/shared";
-import {Dashboard} from "./Dashboard";
+import Dashboard from "./Dashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NewPoll from "./NewPoll";
 
-const App = (props) => {
+const App = ({dispatch}) => {
+
   useEffect(() => {
-    props.dispatch(handleInitialData());
-  }, []);
+    dispatch(handleInitialData());
+  });
 
   return (
     <Fragment>
