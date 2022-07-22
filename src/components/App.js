@@ -9,10 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NewPoll from "./NewPoll";
 
 const App = ({dispatch}) => {
+  dispatch(handleInitialData());
 
-  useEffect(() => {
-    dispatch(handleInitialData());
-  });
 
   return (
     <Fragment>
