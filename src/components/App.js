@@ -1,15 +1,15 @@
-import {useEffect, Fragment} from "react";
+import {Fragment} from "react";
 import {connect} from "react-redux";
-import {Routes, Route} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Login from "./Login";
 import Nav from "./Nav";
-import {handleInitialData} from "../actions/shared";
+import {handleInitialPollsData} from "../actions/handleInitialPollsData";
 import Dashboard from "./Dashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NewPoll from "./NewPoll";
 
 const App = ({dispatch}) => {
-  dispatch(handleInitialData());
+  dispatch(handleInitialPollsData());
 
 
   return (

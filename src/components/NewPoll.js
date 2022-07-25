@@ -1,6 +1,6 @@
 import {connect, ReactReduxContext} from "react-redux";
 import {addPoll} from "../actions/pollAction";
-import {useEffect, useContext} from "react";
+import {useContext} from "react";
 import {useNavigate} from "react-router-dom";
 
 const NewPoll = (props) => {

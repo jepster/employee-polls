@@ -1,19 +1,13 @@
 import {connect} from "react-redux";
-import { ReactReduxContext } from 'react-redux';
-import {useContext, useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {handleInitialData} from "../actions/shared";
 
 export const Dashboard = (props) => {
   const navigate = useNavigate();
 
-  const [pollsHtml, setPollsHtml] = useState('');
-
-
-  useEffect( () => {
+  const [pollsHtml, setPollsHtml] = useState(() => {
     if (props.newPolls.length !== 0) {
-      console.log(props.newPolls);
-      const pollsHtmlComputed = props.newPolls.polls.map(poll => {
+      return props.newPolls.polls.map(poll => {
         return (
           <li className={"list-group-item"} key={poll.id}>
             <div className={"d-flex justify-content-between"}>
@@ -24,11 +18,8 @@ export const Dashboard = (props) => {
           </li>
         )
       });
-      setPollsHtml(pollsHtmlComputed);
     }
-  }
-  );
-
+  });
 
   return (
     <>

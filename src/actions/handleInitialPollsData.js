@@ -1,6 +1,6 @@
-import {addAllPolls, addPoll} from "./pollAction";
+import {addAllPolls} from "./pollAction";
 
-export function handleInitialData() {
+export function handleInitialPollsData() {
   return (dispatch) => {
     const pollsInitial = [
       {
@@ -9,6 +9,7 @@ export function handleInitialData() {
         author: 'Tyler McGinnis',
         authorImage: 'https://github.com/tyler.png',
         votes: 3,
+        id: 1,
       },
       {
         firstOption: 'Refactor our backend application with Python',
@@ -16,6 +17,7 @@ export function handleInitialData() {
         author: 'Sarah Edo',
         authorImage: 'https://github.com/sarah.png',
         votes: 0,
+        id: 2,
       },
       {
         firstOption: 'Learn React.JS',
@@ -23,6 +25,7 @@ export function handleInitialData() {
         author: 'Mat Samis',
         authorImage: 'https://github.com/mike.png',
         votes: 2,
+        id: 3,
       },
       {
         firstOption: 'Testing with Jest',
@@ -30,6 +33,7 @@ export function handleInitialData() {
         author: 'Sarah Edo',
         authorImage: 'https://github.com/sarah.png',
         votes: 3,
+        id: 4,
       }
     ];
 
