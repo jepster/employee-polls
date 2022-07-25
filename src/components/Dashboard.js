@@ -10,11 +10,13 @@ export const Dashboard = (props) => {
       return props.newPolls.polls.map(poll => {
         return (
           <li className={"list-group-item"} key={poll.id}>
-            <div className={"d-flex justify-content-between"}>
-              <h5>{poll.title}</h5>
-              <small>{poll.author}</small>
-            </div>
-            <p>{poll.question}</p>
+            <a href={`/poll/${poll.id}`}>
+              <div className={"d-flex justify-content-between"}>
+                <h5>{poll.title}</h5>
+                <small>{poll.author}</small>
+              </div>
+              <p>{poll.question}</p>
+            </a>
           </li>
         )
       });

@@ -17,7 +17,7 @@ export default function pollReducer(state = {}, action) {
     case ADD_ALL_POLLS:
       return {
         ...state,
-        polls: action.polls.flat(),
+        polls: action.polls,
       }
     default:
       console.log('Action type: ' + action.type);
