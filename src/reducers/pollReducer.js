@@ -1,4 +1,4 @@
-import {ADD_ALL_POLLS, ADD_POLL} from "../actions/pollAction";
+import {ADD_ALL_POLLS, ADD_POLL, UPDATE_POLL} from "../actions/pollAction";
 
 export default function pollReducer(state = {}, action) {
   switch (action.type) {

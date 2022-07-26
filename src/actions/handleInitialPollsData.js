@@ -8,7 +8,8 @@ export function handleInitialPollsData() {
         secondOption: 'Build our new application with Typescript',
         author: 'Tyler McGinnis',
         authorImage: 'https://github.com/tyler.png',
-        votes: 3,
+        votes_first_option: 3,
+        votes_second_option: 2,
         id: 1,
       },
       {
@@ -16,7 +17,8 @@ export function handleInitialPollsData() {
         secondOption: 'Refactor our backend application with PHP',
         author: 'Sarah Edo',
         authorImage: 'https://github.com/sarah.png',
-        votes: 0,
+        votes_first_option: 1,
+        votes_second_option: 3,
         id: 2,
       },
       {
@@ -24,7 +26,8 @@ export function handleInitialPollsData() {
         secondOption: 'Learn Vue.JS',
         author: 'Mat Samis',
         authorImage: 'https://github.com/mike.png',
-        votes: 2,
+        votes_first_option: 3,
+        votes_second_option: 1,
         id: 3,
       },
       {
@@ -32,7 +35,8 @@ export function handleInitialPollsData() {
         secondOption: 'Testing with Behat',
         author: 'Sarah Edo',
         authorImage: 'https://github.com/sarah.png',
-        votes: 3,
+        votes_first_option: 4,
+        votes_second_option: 2,
         id: 4,
       }
     ];

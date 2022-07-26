@@ -12,7 +12,6 @@ import Poll from "./Poll";
 const App = ({dispatch}) => {
   dispatch(handleInitialPollsData());
 
-
   return (
     <Fragment>
       <div className="container">

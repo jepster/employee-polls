@@ -3,10 +3,12 @@ import logger from "./middleware/logger";
 import {combineReducers} from "redux";
 import authedUserReducer from "./reducers/authedUserReducer";
 import pollReducer from "./reducers/pollReducer";
+import voteReducer from "./reducers/voteReducer";
 
 const reducer = combineReducers({
   authedUser: authedUserReducer,
-  polls: pollReducer
+  polls: pollReducer,
+  votes: voteReducer,
 })
 
 export const store = configureStore({
