@@ -1,15 +1,22 @@
-import {connect} from "react-redux";
+import {connect, ReactReduxContext, useDispatch, useSelector} from "react-redux";
 import {Navigate, useNavigate, useParams} from "react-router-dom";
 import {Button} from "reactstrap";
 import {handleAddVote} from "../actions/voteAction";
-import {useState} from "react";
+import {useContext, useState} from "react";
 
-const Poll = ({poll, dispatch}) => {
+const Poll = () => {
+
+  const state = useSelector((state) => state);
+
+  const pollId = useParams().id;
+
+  const poll = Object.values(state.polls.polls).find((poll) => {
+    return parseInt(poll.id) === parseInt(pollId);
+  });
 
   const [pollState, setPollState] = useState(poll);
 
-  // check safely if property firstOption exists in poll object
-
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -33,16 +40,4 @@ const Poll = ({poll, dispatch}) => {
 
 }
 
-const mapStateToProps = ({polls}) => {
-  try {
-    const poll = Object.values(polls.polls).find((poll) => {
-      return parseInt(poll.id) === parseInt(useParams().id);
-    });
-
-    return {poll};
-  } catch (e) {
-    return <Navigate to="/404"/>;
-  }
-};
-
-export default connect(mapStateToProps)(Poll);
+export default Poll;

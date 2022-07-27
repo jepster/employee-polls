@@ -20,8 +20,6 @@ export function addAllVotes(votes) {
 export const handleAddVote = (option, id) => {
   return async (dispatch) => {
 
-    console.log('I have been clicked');
-
     const makeId = () => {
       let result = '';
       let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -33,22 +31,20 @@ export const handleAddVote = (option, id) => {
       return result;
     }
 
-    if (option === 'first_option') {
-      await dispatch(
-        addVote({
-        id: makeId(),
-        poll_id: id,
-        option: 'first_option',
-      })
-      )
+    const createVote = (option, id) => {
+      return new Promise((res, rej) => {
+        const vote = {
+          id: makeId(),
+          poll_id: id,
+          option: option,
+        };
+
+        setTimeout(() => {
+          res(vote);
+        }, 500);
+      });
     }
 
-    if (option === 'second_option') {
-      await dispatch(addVote({
-        id: makeId(),
-        poll_id: id,
-        option: 'first_option',
-      }))
-    }
+    createVote(option, id).then((vote) => dispatch(addVote(vote)));
   }
 }
