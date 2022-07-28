@@ -5,6 +5,7 @@ import {store} from "./store";
 import {Provider} from "react-redux";
 import Login from "./components/Login";
 import '@testing-library/jest-dom'
+import {addVote} from "./actions/voteAction";
 
 describe("App", () => {
 
@@ -44,6 +45,28 @@ describe("App", () => {
     </Provider>);
 
     expect(store.getState().polls).toBeDefined();
+  });
+
+  it('Check if we can add multiple items to the votes state', () => {
+    render(<Provider store={store}>
+      <Router>
+        <App/>
+      </Router>
+    </Provider>);
+    expect(store.getState().votes).toBeDefined();
+
+    store.dispatch(addVote(
+      {
+        id: '123',
+      }));
+    expect(store.getState().votes.votes[0].id).toBe('123');
+
+    store.dispatch(addVote(
+      {
+        id: '456',
+      }
+    ));
+    expect(store.getState().votes.votes[1].id).toBe('456');
   });
 
 });

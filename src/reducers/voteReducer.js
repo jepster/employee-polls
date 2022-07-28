@@ -1,17 +1,23 @@
 import {ADD_VOTE, ADD_ALL_VOTES} from "../actions/voteAction";
 
 export default function voteReducer(state = {}, action) {
+  const defaultVotes = state.votes || [];
+
   switch (action.type) {
     case ADD_VOTE:
-      if (state.votes) {
-        return {
-          ...state,
-          votes: state.votes.concat(action.vote),
-        };
-      }
-      return Object.assign({}, state,
-        [action.vote],
-      )
+      console.log('ADD_VOTE has been triggered', action.vote);
+      console.log(action.vote);
+      // if (typeof state.votes === 'object' && Array.isArray(state.votes.votes)) {
+      //
+      //   state.votes.push(action.vote);
+      //
+      //
+      // }
+
+      return {
+        ...state,
+        votes: [...defaultVotes, action.vote]
+      };
     case ADD_ALL_VOTES:
       return {
         ...state,

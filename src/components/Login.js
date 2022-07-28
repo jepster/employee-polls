@@ -1,10 +1,15 @@
 import {connect} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {setAuthedUser} from "../actions/authedUserAction";
+import {handleInitialPollsData} from "../actions/handleInitialPollsData";
 
 const Login = ({ dispatch }) => {
+  useEffect(() => {
+    dispatch(handleInitialPollsData());
+  });
+
   const [state, setState] = useState({
     dropdownOpen: false,
     selectedUser: 'Select user',
@@ -55,9 +60,9 @@ const Login = ({ dispatch }) => {
                 {state.selectedUser}
               </DropdownToggle>
               <DropdownMenu>
-                <DropdownItem>Sylvester Stallone</DropdownItem>
-                <DropdownItem>Bruce Willis</DropdownItem>
-                <DropdownItem>Tom Cruise</DropdownItem>
+                <DropdownItem>Tyler McGinnis</DropdownItem>
+                <DropdownItem>Mat Samis</DropdownItem>
+                <DropdownItem>Sarah Edo</DropdownItem>
               </DropdownMenu>
             </Dropdown>
           </Dropdown>

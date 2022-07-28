@@ -44,7 +44,7 @@ Object {
                     tabindex="0"
                     type="button"
                   >
-                    Sylvester Stallone
+                    Tyler McGinnis
                   </button>
                   <button
                     class="dropdown-item"
@@ -52,7 +52,7 @@ Object {
                     tabindex="0"
                     type="button"
                   >
-                    Bruce Willis
+                    Mat Samis
                   </button>
                   <button
                     class="dropdown-item"
@@ -60,7 +60,7 @@ Object {
                     tabindex="0"
                     type="button"
                   >
-                    Tom Cruise
+                    Sarah Edo
                   </button>
                 </div>
               </div>
@@ -136,7 +136,7 @@ Object {
                   tabindex="0"
                   type="button"
                 >
-                  Sylvester Stallone
+                  Tyler McGinnis
                 </button>
                 <button
                   class="dropdown-item"
@@ -144,7 +144,7 @@ Object {
                   tabindex="0"
                   type="button"
                 >
-                  Bruce Willis
+                  Mat Samis
                 </button>
                 <button
                   class="dropdown-item"
@@ -152,7 +152,7 @@ Object {
                   tabindex="0"
                   type="button"
                 >
-                  Tom Cruise
+                  Sarah Edo
                 </button>
               </div>
             </div>
@@ -315,7 +315,7 @@ Object {
                       tabindex="0"
                       type="button"
                     >
-                      Sylvester Stallone
+                      Tyler McGinnis
                     </button>
                     <button
                       class="dropdown-item"
@@ -323,7 +323,7 @@ Object {
                       tabindex="0"
                       type="button"
                     >
-                      Bruce Willis
+                      Mat Samis
                     </button>
                     <button
                       class="dropdown-item"
@@ -331,7 +331,7 @@ Object {
                       tabindex="0"
                       type="button"
                     >
-                      Tom Cruise
+                      Sarah Edo
                     </button>
                   </div>
                 </div>
@@ -438,7 +438,7 @@ Object {
                     tabindex="0"
                     type="button"
                   >
-                    Sylvester Stallone
+                    Tyler McGinnis
                   </button>
                   <button
                     class="dropdown-item"
@@ -446,7 +446,7 @@ Object {
                     tabindex="0"
                     type="button"
                   >
-                    Bruce Willis
+                    Mat Samis
                   </button>
                   <button
                     class="dropdown-item"
@@ -454,7 +454,7 @@ Object {
                     tabindex="0"
                     type="button"
                   >
-                    Tom Cruise
+                    Sarah Edo
                   </button>
                 </div>
               </div>
