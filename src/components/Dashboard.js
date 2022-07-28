@@ -1,6 +1,6 @@
-import {connect} from "react-redux";
+import {connect, useSelector} from "react-redux";
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export const Dashboard = ({polls, votes}) => {
   const navigate = useNavigate();
@@ -14,13 +14,13 @@ export const Dashboard = ({polls, votes}) => {
       if (!vote) {
         return (
           <li className={"list-group-item"} key={poll.id}>
-            <a href={`/poll/${poll.id}`}>
+            <Link to={'/poll/' + poll.id}>
               <div className={"d-flex justify-content-between"}>
                 <h5>{poll.title}</h5>
                 <small>{poll.author}</small>
               </div>
               <p>{poll.question}</p>
-            </a>
+            </Link>
           </li>
         )
       }
@@ -33,13 +33,13 @@ export const Dashboard = ({polls, votes}) => {
       if (vote) {
         return (
           <li className={"list-group-item"} key={poll.id}>
-            <a href={`/poll/${poll.id}`}>
+            <Link to={'/poll/' + poll.id}>
               <div className={"d-flex justify-content-between"}>
                 <h5>{poll.title}</h5>
                 <small>{poll.author}</small>
               </div>
               <p>{poll.question}</p>
-            </a>
+            </Link>
           </li>
         )
       }
