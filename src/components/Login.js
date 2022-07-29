@@ -21,7 +21,7 @@ const Login = ({ dispatch }) => {
     e.preventDefault();
 
     if (state.password !== '') {
-      navigate("/dashboard");
+      navigate("/");
       setState({...state, showPasswordWarning: false});
       dispatch(setAuthedUser(state.selectedUser));
     } else {

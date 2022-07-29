@@ -40,7 +40,7 @@ const Poll = () => {
         });
       }
 
-      createVote(option, id).then((vote) => dispatch(addVote(vote))).then(navigate('/dashboard'));
+      createVote(option, id).then((vote) => dispatch(addVote(vote))).then(navigate('/'));
     }
   }
 

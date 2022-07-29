@@ -26,7 +26,7 @@ const NewPoll = (props) => {
 
     props.dispatch(addPoll(poll));
 
-    navigate('/dashboard');
+    navigate('/');
   }
 
   return (

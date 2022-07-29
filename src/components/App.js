@@ -9,14 +9,16 @@ import NewPoll from "./NewPoll";
 import Poll from "./Poll";
 import PrivateRoute from "./PrivateRoute";
 
-const App = ({dispatch}) => {
+const App = ({dispatch, authedUser}) => {
   return (
     <Fragment>
       <div className="container">
-        <Nav/>
+
+        {authedUser ? <Nav/> : ''}
+
         <Routes>
-          <Route path="/" exact element={<Login/>}/>
-          <Route path="/dashboard" exact element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
+          <Route path="/login" exact element={<Login/>}/>
+          <Route path="/" exact element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
           <Route path="/new-poll" exact element={<PrivateRoute><NewPoll/></PrivateRoute>}/>
           <Route path="/poll/:id" exact element={<PrivateRoute><Poll/></PrivateRoute>}/>
         </Routes>
@@ -26,7 +28,7 @@ const App = ({dispatch}) => {
 };
 
 const mapStateToProps = ({authedUser}) => ({
-  loading: authedUser === null
+  authedUser: authedUser,
 });
 
 export default connect(mapStateToProps)(App);
