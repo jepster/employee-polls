@@ -7,6 +7,7 @@ import Dashboard from "./Dashboard";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NewPoll from "./NewPoll";
 import Poll from "./Poll";
+import PrivateRoute from "./PrivateRoute";
 
 const App = ({dispatch}) => {
   return (
@@ -15,9 +16,9 @@ const App = ({dispatch}) => {
         <Nav/>
         <Routes>
           <Route path="/" exact element={<Login/>}/>
-          <Route path="/dashboard" exact element={<Dashboard/>}/>
-          <Route path="/new-poll" exact element={<NewPoll/>}/>
-          <Route path="/poll/:id" exact element={<Poll/>}/>
+          <Route path="/dashboard" exact element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
+          <Route path="/new-poll" exact element={<PrivateRoute><NewPoll/></PrivateRoute>}/>
+          <Route path="/poll/:id" exact element={<PrivateRoute><Poll/></PrivateRoute>}/>
         </Routes>
       </div>
     </Fragment>
