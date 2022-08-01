@@ -2,6 +2,7 @@ import {connect, ReactReduxContext} from "react-redux";
 import {addPoll} from "../actions/pollAction";
 import {useContext} from "react";
 import {useNavigate} from "react-router-dom";
+import makeId from "../services/makeId";
 
 const NewPoll = (props) => {
 
@@ -21,7 +22,11 @@ const NewPoll = (props) => {
     const poll = {
       firstOption: firstOption,
       secondOption: secondOption,
-      author: state.authedUser,
+      author: state.authedUser.username,
+      authorImage: state.authedUser.authorImage,
+      votes_first_option: 0,
+      votes_second_option: 0,
+      id: makeId(),
     };
 
     props.dispatch(addPoll(poll));

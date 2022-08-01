@@ -10,7 +10,7 @@ export function handleInitialPollsData() {
         authorImage: 'https://github.com/tyler.png',
         votes_first_option: 3,
         votes_second_option: 2,
-        id: 1,
+        id: '1asdfgiasufgi7834b',
       },
       {
         firstOption: 'Refactor our backend application with Python',
@@ -19,7 +19,7 @@ export function handleInitialPollsData() {
         authorImage: 'https://github.com/sarah.png',
         votes_first_option: 1,
         votes_second_option: 3,
-        id: 2,
+        id: '2sdfuhsifuhiasf',
       },
       {
         firstOption: 'Learn React.JS',
@@ -28,7 +28,7 @@ export function handleInitialPollsData() {
         authorImage: 'https://github.com/mike.png',
         votes_first_option: 3,
         votes_second_option: 1,
-        id: 3,
+        id: '3asdfhsakdf',
       },
       {
         firstOption: 'Testing with Jest',
@@ -37,7 +37,7 @@ export function handleInitialPollsData() {
         authorImage: 'https://github.com/sarah.png',
         votes_first_option: 4,
         votes_second_option: 2,
-        id: 4,
+        id: '4sdfhasdfhsadf',
       }
     ];
 

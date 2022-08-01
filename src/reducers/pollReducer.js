@@ -5,7 +5,7 @@ export default function pollReducer(state = {}, action) {
     case ADD_POLL:
       return {
         ...state,
-        polls: [action.poll],
+        polls: state.polls.concat(action.poll),
       }
     case ADD_ALL_POLLS:
       return {

@@ -23,7 +23,7 @@ const Login = ({ dispatch }) => {
     if (state.password !== '') {
       navigate("/");
       setState({...state, showPasswordWarning: false});
-      dispatch(setAuthedUser(state.selectedUser));
+      dispatch(setAuthedUser(state.selectedUser, mapAuthorImageToUser(state.selectedUser)));
     } else {
       setState({...state, showPasswordWarning: true});
     }
@@ -40,6 +40,17 @@ const Login = ({ dispatch }) => {
   const setPassword = (password) => {
     setState({...state, password: password});
   }
+
+  const mapAuthorImageToUser = (username) => {
+    switch (username) {
+      case 'Tyler McGinnis':
+        return 'https://github.com/tyler.png';
+      case 'Sarah Edo':
+        return 'https://github.com/sarah.png';
+      case 'Mat Samis':
+        return 'https://github.com/mike.png';
+    }
+  };
 
   return (
     <div className="container">

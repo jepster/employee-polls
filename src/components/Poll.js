@@ -3,6 +3,7 @@ import {Navigate, useNavigate, useParams} from "react-router-dom";
 import {Button} from "reactstrap";
 import {addVote, handleAddVote} from "../actions/voteAction";
 import {useState} from "react";
+import makeId from "../services/makeId";
 
 const Poll = () => {
 
@@ -10,25 +11,15 @@ const Poll = () => {
 
   const pollId = useParams().id;
   const poll = Object.values(state.polls.polls).find((poll) => {
-    return parseInt(poll.id) === parseInt(pollId);
+    return poll.id === pollId;
   });
+
   const [pollState, setPollState] = useState(poll);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleAddVote = (option, id) => {
     return async (dispatch) => {
-      const makeId = () => {
-        let result = '';
-        let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let charactersLength = characters.length;
-        for (let i = 0; i < 15; i++) {
-          result += characters.charAt(Math.floor(Math.random() *
-            charactersLength));
-        }
-        return result;
-      }
-
       const createVote = (option, id) => {
         return new Promise((res, rej) => {
           const vote = {
