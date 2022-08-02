@@ -1,7 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate, useNavigate, useParams} from "react-router-dom";
 import {Button} from "reactstrap";
-import {addVote, handleAddVote} from "../actions/voteAction";
 import {useState} from "react";
 import makeId from "../services/makeId";
 
@@ -57,7 +56,7 @@ const Poll = () => {
         });
       }
 
-      createVote(option, id).then((vote) => dispatch(addVote(vote))).then(navigate('/'));
+      // createVote(option, id).then((vote) => dispatch(addVote(vote))).then(navigate('/'));
     }
   }
 

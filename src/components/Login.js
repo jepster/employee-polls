@@ -1,56 +1,19 @@
-import {connect} from "react-redux";
+import {connect, ReactReduxContext, useDispatch} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {Button, Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
-import {useEffect, useState} from "react";
+import {Button} from 'reactstrap';
+import {useEffect, useState, useContext} from "react";
 import {setAuthedUser} from "../actions/authedUserAction";
 import {handleInitialPollsData} from "../actions/handleInitialPollsData";
+import {_getUsers} from "../_DATA";
 
-const Login = ({ dispatch }) => {
-  useEffect(() => {
+const Login = async () => {
+  const dispatch = useDispatch();
+  useEffect( () => {
     dispatch(handleInitialPollsData());
   });
 
-  const [state, setState] = useState({
-    dropdownOpen: false,
-    selectedUser: 'Select user',
-    password: '',
-    showPasswordWarning: false,
-  });
-  const navigate = useNavigate();
-  const setUserSignedIn = (e) => {
-    e.preventDefault();
+  const { store } = useContext(ReactReduxContext);
 
-    if (state.password !== '') {
-      navigate("/");
-      setState({...state, showPasswordWarning: false});
-      dispatch(setAuthedUser(state.selectedUser, mapAuthorImageToUser(state.selectedUser)));
-    } else {
-      setState({...state, showPasswordWarning: true});
-    }
-  };
-
-  const toggle = (option) => {
-    let selectedUser = 'Select user';
-    if (option.target.innerText !== 'Select user') {
-      selectedUser = option.target.innerText;
-    }
-    setState({dropdownOpen: !state.dropdownOpen, selectedUser: selectedUser});
-  };
-
-  const setPassword = (password) => {
-    setState({...state, password: password});
-  }
-
-  const mapAuthorImageToUser = (username) => {
-    switch (username) {
-      case 'Tyler McGinnis':
-        return 'https://github.com/tyler.png';
-      case 'Sarah Edo':
-        return 'https://github.com/sarah.png';
-      case 'Mat Samis':
-        return 'https://github.com/mike.png';
-    }
-  };
 
   return (
     <div className="container">
@@ -64,24 +27,11 @@ const Login = ({ dispatch }) => {
 
       <form>
         <label>User</label>
-        <div className="row">
-          <Dropdown>
-            <Dropdown isOpen={state.dropdownOpen} toggle={toggle}>
-              <DropdownToggle caret>
-                {state.selectedUser}
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem>Tyler McGinnis</DropdownItem>
-                <DropdownItem>Mat Samis</DropdownItem>
-                <DropdownItem>Sarah Edo</DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
-          </Dropdown>
-        </div>
+        <input className="form-control" type="text" name="username" onChange={setUsername} value={'sarahedo'}/>
         <div className="row pt-3">
           <label>Password (insert any you like)</label>
         </div>
-        <input type="password" name="password" autoComplete="new-password" onChange={setPassword} />
+        <input className="form-control" type="password" name="password" autoComplete="new-password" value={'password123'} onChange={setPassword} />
         <div className="row pt-3">
           <div className="col-2">
             <Button color="primary" onClick={setUserSignedIn}>Submit</Button>
@@ -92,4 +42,4 @@ const Login = ({ dispatch }) => {
   );
 }
 
-export default connect()(Login);
+export default Login;

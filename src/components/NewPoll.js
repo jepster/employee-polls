@@ -1,5 +1,5 @@
 import {connect, ReactReduxContext} from "react-redux";
-import {addPoll} from "../actions/pollAction";
+// import {addPoll} from "../actions/pollAction";
 import {useContext} from "react";
 import {useNavigate} from "react-router-dom";
 import makeId from "../services/makeId";
@@ -29,7 +29,7 @@ const NewPoll = (props) => {
       id: makeId(),
     };
 
-    props.dispatch(addPoll(poll));
+    // props.dispatch(addPoll(poll));
 
     navigate('/');
   }
