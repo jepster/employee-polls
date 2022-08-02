@@ -39,7 +39,7 @@ let users = {
     id: 'zoshikanlu',
     password:'pass246',
     name: 'Zenobia Oshikanlu',
-    avatarURL: 'https://avatars.githubusercontent.com/u/3797675?v=4',
+    avatarURL: 'https://github.com/zenobia.png',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
     },
@@ -148,7 +148,7 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
-    author,
+    author: author.id,
     optionOne: {
       votes: [],
       text: optionOneText,
