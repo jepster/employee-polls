@@ -1,40 +1,50 @@
-import {connect, ReactReduxContext, useDispatch} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {connect} from "react-redux";
+import {Navigate} from "react-router-dom";
 import {Button} from 'reactstrap';
-import {useEffect, useState, useContext} from "react";
+import {useState} from "react";
 import {setAuthedUser} from "../actions/authedUserAction";
-import {handleInitialPollsData} from "../actions/handleInitialPollsData";
-import {_getUsers} from "../_DATA";
 
-const Login = async () => {
-  const dispatch = useDispatch();
-  useEffect( () => {
-    dispatch(handleInitialPollsData());
-  });
+const Login = ({dispatch, authedUser}) => {
+  const [username, setUsername] = useState("sarahedo");
+  const [password, setPassword] = useState("password123");
 
-  const { store } = useContext(ReactReduxContext);
+  if (authedUser) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectUrl = urlParams.get('redirectTo');
+    return <Navigate to={redirectUrl ? redirectUrl : '/'}/>;
+  }
 
+  const handleUsername = (username) => {
+    setUsername(username);
+  };
+  const handlePassword = (password) => {
+    setPassword(password);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (username !== '' && password !== '') {
+      dispatch(setAuthedUser(username));
+      setUsername("");
+      setPassword("");
+    }
+  };
 
   return (
     <div className="container">
       <h2>Sign in</h2>
 
-      {state.showPasswordWarning ? (
-        <div className="alert alert-danger" role="alert">
-          Please enter a password.
-        </div>
-      ) : ''}
-
       <form>
         <label>User</label>
-        <input className="form-control" type="text" name="username" onChange={setUsername} value={'sarahedo'}/>
+        <input className="form-control" type="text" name="username" onChange={handleUsername} defaultValue={"sarahedo"} />
         <div className="row pt-3">
           <label>Password (insert any you like)</label>
         </div>
-        <input className="form-control" type="password" name="password" autoComplete="new-password" value={'password123'} onChange={setPassword} />
+        <input className="form-control" type="password" name="password" autoComplete="new-password" defaultValue={"password123"} onChange={handlePassword} />
         <div className="row pt-3">
           <div className="col-2">
-            <Button color="primary" onClick={setUserSignedIn}>Submit</Button>
+            <Button color="primary" onClick={handleSubmit}>Submit</Button>
           </div>
         </div>
       </form>
@@ -42,4 +52,8 @@ const Login = async () => {
   );
 }
 
-export default Login;
+const mapStateToProps = ({authedUser}) => ({
+  authedUser: !!authedUser,
+});
+
+export default connect(mapStateToProps)(Login);

@@ -1,19 +1,31 @@
-import {ADD_ALL_QUESTIONS, ADD_QUESTION} from "../actions/questionAction";
+import {ADD_ANSWER_QUESTION, ADD_QUESTION, RECEIVE_QUESTIONS} from "../actions/questionAction";
 
 export default function questionReducer(state = {}, action) {
   switch (action.type) {
+    case RECEIVE_QUESTIONS:
+      return {
+        ...state,
+        ...action.questions,
+      };
     case ADD_QUESTION:
       return {
         ...state,
-        questions: state.questions.concat(action.poll),
-      }
-    case ADD_ALL_QUESTIONS:
+        [action.question.id]: action.question,
+      };
+    case ADD_ANSWER_QUESTION:
       return {
         ...state,
-        questions: action.questions,
-      }
+        [action.qid]: {
+          ...state[action.qid],
+          [action.answer]: {
+            ...state[action.qid][action.answer],
+            votes: state[action.qid][action.answer].votes.concat(action.author)
+          }
+        }
+
+
+      };
     default:
-      console.log('Action type: ' + action.type);
       return state;
   }
 }
