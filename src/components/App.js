@@ -1,5 +1,5 @@
-import {Fragment} from "react";
-import {connect, useSelector} from "react-redux";
+import {Fragment, useEffect} from "react";
+import {connect} from "react-redux";
 import {Route, Routes} from "react-router-dom";
 import Login from "./Login";
 import Nav from "./Nav";
@@ -8,8 +8,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NewPoll from "./NewPoll";
 import Poll from "./Poll";
 import PrivateRoute from "./PrivateRoute";
+import {handleInitialData} from "../actions/shared";
 
 const App = ({dispatch, authedUser}) => {
+  useEffect(() => {
+    dispatch(handleInitialData());
+  });
+
   return (
     <Fragment>
       <div className="container">

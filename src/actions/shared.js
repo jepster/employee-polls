@@ -1,5 +1,5 @@
-import {receiveUsers} from "./users";
-import {receiveQuestions} from "./questions";
+import {receiveUsers} from "./userAction";
+import {receiveQuestions} from "./questionAction";
 import {getInitialData} from "../util/api";
 
 export function handleInitialData() {

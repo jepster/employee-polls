@@ -1,83 +1,50 @@
 import {connect, useSelector} from "react-redux";
-import {useState} from "react";
-import {Link, Redirect, Route} from "react-router-dom";
+import Card from "./Card";
 
-export const Dashboard = ({polls, votes, authedUser}) => {
-  const [pollsHtml, setPollsHtml] = useState(() => {
-    const newPolls = polls.polls.map(poll => {
-      let vote = false;
-      if (votes.votes && votes.votes.length > 0) {
-        vote = votes.votes.find(vote => vote.poll_id === poll.id);
-      }
-      if (!vote) {
-        return (
-          <li className={"list-group-item"} key={poll.id}>
-            <Link to={'/poll/' + poll.id}>
-              <div className={"d-flex justify-content-between"}>
-                <h5>{poll.title}</h5>
-                <small>{poll.author}</small>
-              </div>
-              <p>{poll.question}</p>
-            </Link>
-          </li>
-        )
-      }
-    });
-    const pollsWithVotes = polls.polls.map(poll => {
-      let vote = false;
-      if (votes.votes && votes.votes.length > 0) {
-        vote = votes.votes.find(vote => vote.poll_id === poll.id);
-      }
-      if (vote) {
-        return (
-          <li className={"list-group-item"} key={poll.id}>
-            <Link to={'/poll/' + poll.id}>
-              <div className={"d-flex justify-content-between"}>
-                <h5>{poll.title}</h5>
-                <small>{poll.author}</small>
-              </div>
-              <p>{poll.question}</p>
-            </Link>
-          </li>
-        )
-      }
-    });
-    return {
-      newPollsHtml: newPolls,
-      pollsWithVotesHtml: pollsWithVotes,
-    }
-  });
+export const Dashboard = ({authedUser, questions, users}) => {
+
+  const unanswered = (question) => (!question.optionOne.votes.includes(authedUser.id)
+    && !question.optionTwo.votes.includes(authedUser.id));
+
+  const answered = (question) => (question.optionOne.votes.includes(authedUser.id)
+    || question.optionTwo.votes.includes(authedUser.id));
 
   return (
-    <>
-      <div className={"container"}>
-        <h2>New Polls</h2>
-        <div className={"row"}>
-          <div className={"col-12"}>
-            <ul className={"list-group"}>
-              {pollsHtml.newPollsHtml}
-            </ul>
-          </div>
-        </div>
-        <h2>Answered Polls</h2>
-        <div className={"row"}>
-          <div className={"col-12"}>
-            <ul className={"list-group"}>
-              {pollsHtml.pollsWithVotesHtml}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </>
+    <div>
+      <h1 className="text-3xl font-bold mt-9" data-testid="heading">Dashboard</h1>
+
+      <h2 className="text-2xl font-bold mt-6">New Questions</h2>
+      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {questions
+          .filter(unanswered)
+          .map((question) => (
+            <li key={question.id}>
+              <Card question={question} author={users[question.author]}/>
+            </li>
+          ))}
+      </ul>
+
+      <h2 className="text-2xl font-bold mt-6">Answered Questions</h2>
+      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {questions
+          .filter(answered)
+          .map((question) => (
+            <li key={question.id}>
+              <Card question={question} author={users[question.author]}/>
+            </li>
+          ))}
+      </ul>
+    </div>
   );
 
 };
 
-const mapStateToProps = ({polls, votes}) => (
-  {
-    polls: polls,
-    votes: votes,
-  }
-);
+const mapStateToProps = ({authedUser, questions, users}) => ({
+  authedUser,
+  questions: Object.values(questions).sort(
+    (a, b) => b.timestamp - a.timestamp
+  ),
+  users,
+});
 
 export default connect(mapStateToProps)(Dashboard);
