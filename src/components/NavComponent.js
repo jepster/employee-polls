@@ -2,7 +2,7 @@ import {Link} from "react-router-dom";
 import {handleLogout} from "../actions/authedUserAction";
 import {useDispatch} from "react-redux";
 
-const Nav = () => {
+const NavComponent = () => {
 
   const dispatch = useDispatch();
 
@@ -26,4 +26,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default NavComponent;

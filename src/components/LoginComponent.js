@@ -4,7 +4,7 @@ import {Button} from 'reactstrap';
 import {useState} from "react";
 import {handleLogin} from "../actions/authedUserAction";
 
-const Login = ({dispatch, authedUser}) => {
+const LoginComponent = ({dispatch, authedUser}) => {
   const [username, setUsername] = useState("sarahedo");
   const [password, setPassword] = useState("password123");
 
@@ -42,11 +42,13 @@ const Login = ({dispatch, authedUser}) => {
 
       <form>
         <label>User</label>
-        <input className="form-control" type="text" name="username" onChange={handleUsername} defaultValue={"sarahedo"} />
+        <input className="form-control" type="text" name="username" onChange={handleUsername}
+               defaultValue={"sarahedo"}/>
         <div className="row pt-3">
           <label>Password (insert any you like)</label>
         </div>
-        <input className="form-control" type="password" name="password" autoComplete="new-password" defaultValue={"password123"} onChange={handlePassword} />
+        <input className="form-control" type="password" name="password" autoComplete="new-password"
+               defaultValue={"password123"} onChange={handlePassword}/>
         <div className="row pt-3">
           <div className="col-2">
             <Button color="primary" onClick={handleSubmit}>Submit</Button>
@@ -61,4 +63,4 @@ const mapStateToProps = ({authedUser}) => ({
   authedUser: !!authedUser,
 });
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(LoginComponent);

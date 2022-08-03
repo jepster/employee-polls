@@ -1,17 +1,17 @@
 import {Fragment, useEffect} from "react";
 import {connect} from "react-redux";
 import {Route, Routes} from "react-router-dom";
-import Login from "./Login";
-import Nav from "./Nav";
-import Dashboard from "./Dashboard";
+import Login from "./LoginComponent";
+import NavComponent from "./NavComponent";
+import Dashboard from "./DashboardComponent";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NewPoll from "./NewPoll";
-import Poll from "./Poll";
-import PrivateRoute from "./PrivateRoute";
+import NewPoll from "./NewPollComponent";
+import Poll from "./PollComponent";
+import PrivateRoute from "./PrivateRouteComponent";
 import {handleInitialData} from "../actions/shared";
-import Leaderboard from "./Leaderboard";
+import Leaderboard from "./LeaderboardComponent";
 
-const App = ({dispatch, authedUser}) => {
+const AppComponent = ({dispatch, authedUser}) => {
   useEffect(() => {
     dispatch(handleInitialData());
   });
@@ -20,7 +20,7 @@ const App = ({dispatch, authedUser}) => {
     <Fragment>
       <div className="container">
 
-        {authedUser ? <Nav/> : ''}
+        {authedUser ? <NavComponent/> : ''}
 
         <Routes>
           <Route path="/login" exact element={<Login/>}/>
@@ -38,4 +38,4 @@ const mapStateToProps = ({authedUser}) => ({
   authedUser: authedUser,
 });
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(AppComponent);

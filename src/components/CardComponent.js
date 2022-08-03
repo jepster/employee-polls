@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-const Card = ({question, author}) => {
+const CardComponent = ({question, author}) => {
     return (
         <Link to={'poll/' + question.id}>
         <div className="m-3 p-2 rounded-xl shadow-md hover:shadow-xl transition bg-zinc-300 max-w-sm mx-auto flex items-center space-x-4">
@@ -9,12 +9,12 @@ const Card = ({question, author}) => {
             </div>
             <div>
                 <div className="text-xl font-medium text-black">{question.author}</div>
-                <p className="text-xs italic">{new Date(question.timestamp).toDateString()}</p>
-                <p className="underline underline-offset-4">Show</p>
+                <p>{new Date(question.timestamp).toDateString()}</p>
+                <p>Show</p>
             </div>
         </div>
         </Link>
     );
 }
 
-export default Card;
+export default CardComponent;

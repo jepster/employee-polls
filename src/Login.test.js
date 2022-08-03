@@ -1,9 +1,4 @@
-import {render} from '@testing-library/react';
-import App from './components/App';
-import {BrowserRouter as Router, BrowserRouter} from "react-router-dom";
-import {store} from "./store";
-import {Provider} from "react-redux";
-import Login from "./components/Login";
+import App from './components/AppComponent';
 import '@testing-library/jest-dom'
 
 describe("App", () => {
