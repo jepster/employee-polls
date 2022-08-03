@@ -2,7 +2,7 @@ import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 import {Button} from 'reactstrap';
 import {useState} from "react";
-import {handleLogin, setAuthedUser} from "../actions/authedUserAction";
+import {handleLogin} from "../actions/authedUserAction";
 
 const Login = ({dispatch, authedUser}) => {
   const [username, setUsername] = useState("sarahedo");
@@ -11,7 +11,8 @@ const Login = ({dispatch, authedUser}) => {
   if (authedUser) {
     const urlParams = new URLSearchParams(window.location.search);
     const redirectUrl = urlParams.get('redirectTo');
-    if (redirectUrl === null) {
+
+    if (redirectUrl === null || redirectUrl.includes('login')) {
       return <Navigate to={'/'}/>;
     } else {
       return <Navigate to={redirectUrl}/>;
