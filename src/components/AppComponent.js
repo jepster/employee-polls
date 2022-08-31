@@ -10,17 +10,20 @@ import Poll from "./PollComponent";
 import PrivateRoute from "./PrivateRouteComponent";
 import {handleInitialData} from "../actions/shared";
 import Leaderboard from "./LeaderboardComponent";
+import {store} from "../store";
 
-const AppComponent = ({dispatch, authedUser}) => {
+const AppComponent = () => {
   useEffect(() => {
-    dispatch(handleInitialData());
+    store.dispatch(handleInitialData());
   });
+
+  const state = store.getState()
 
   return (
     <Fragment>
       <div className="container">
 
-        {authedUser ? <NavComponent/> : ''}
+        {state.authedUser ? <NavComponent/> : ''}
 
         <Routes>
           <Route path="/login" exact element={<Login/>}/>
@@ -34,8 +37,4 @@ const AppComponent = ({dispatch, authedUser}) => {
   );
 };
 
-const mapStateToProps = ({authedUser}) => ({
-  authedUser: authedUser,
-});
-
-export default connect(mapStateToProps)(AppComponent);
+export default AppComponent;

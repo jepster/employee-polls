@@ -1,8 +1,8 @@
-import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 import {Button} from 'reactstrap';
 import {useState} from "react";
-import {handleLogin} from "../actions/authedUserAction";
+import {setAuthedUser} from "../slices/authedUserSlice";
+import {store} from "../store";
 
 const LoginComponent = ({dispatch, authedUser}) => {
   const [username, setUsername] = useState("sarahedo");
@@ -29,8 +29,16 @@ const LoginComponent = ({dispatch, authedUser}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (username !== '' && password !== '') {
-      dispatch(handleLogin(username, password));
+    console.log('username: ' + username);
+    console.log('password: ' + password);
+
+    const state = store.getState()
+
+    console.log('the store state: ');
+    console.log(state);
+
+    if (state.authedUser !== null) {
+      store.dispatch(setAuthedUser(username));
       setUsername('');
       setPassword('');
     }
@@ -59,8 +67,4 @@ const LoginComponent = ({dispatch, authedUser}) => {
   );
 }
 
-const mapStateToProps = ({authedUser}) => ({
-  authedUser: !!authedUser,
-});
-
-export default connect(mapStateToProps)(LoginComponent);
+export default LoginComponent;

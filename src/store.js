@@ -1,18 +1,15 @@
 import {configureStore} from "@reduxjs/toolkit";
 import logger from "./middleware/logger";
-import {combineReducers} from "redux";
-import authedUserReducer from "./reducers/authedUserReducer";
 import userReducer from "./reducers/userReducer";
 import questionReducer from "./reducers/questionReducer";
-
-const reducer = combineReducers({
-  authedUser: authedUserReducer,
-  users: userReducer,
-  questions: questionReducer,
-})
+import authedUserReducer from "./slices/authedUserSlice";
 
 export const store = configureStore({
-  reducer,
+  reducer: {
+    authedUser: authedUserReducer,
+    users: userReducer,
+    questions: questionReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().prepend(logger)
 })

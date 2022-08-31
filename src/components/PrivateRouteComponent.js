@@ -1,12 +1,9 @@
 import {Navigate} from "react-router-dom";
-import {connect} from "react-redux";
+import {store} from "../store";
 
 const PrivateRouteComponent = ({children, loggedIn}) => {
-  return loggedIn ? children : <Navigate to={`/login`}/>;
+  const state = store.getState()
+  return state.authedUser ? children : <Navigate to={`/login`}/>;
 };
 
-const mapStateToProps = ({authedUser}) => ({
-  loggedIn: !!authedUser,
-});
-
-export default connect(mapStateToProps)(PrivateRouteComponent);
+export default PrivateRouteComponent;

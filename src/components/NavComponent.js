@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
-import {handleLogout} from "../actions/authedUserAction";
 import {useDispatch} from "react-redux";
+import {logoutAuthedUser} from "../slices/authedUserSlice";
+import {store} from "../store";
 
 const NavComponent = () => {
 
@@ -19,7 +20,7 @@ const NavComponent = () => {
           <Link to="/new-poll">New poll</Link>
         </li>
         <li>
-          <Link to="/" onClick={dispatch(handleLogout)}>Logout</Link>
+          <Link to="/" onClick={dispatch(store.dispatch(logoutAuthedUser()))}>Logout</Link>
         </li>
       </ul>
     </nav>
