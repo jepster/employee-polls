@@ -1,23 +1,15 @@
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import {Button} from 'reactstrap';
 import {useState} from "react";
 import {setAuthedUser} from "../slices/authedUserSlice";
 import {store} from "../store";
 
-const LoginComponent = ({dispatch, authedUser}) => {
+const LoginComponent = () => {
   const [username, setUsername] = useState("sarahedo");
   const [password, setPassword] = useState("password123");
+  const navigate = useNavigate();
 
-  if (authedUser) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const redirectUrl = urlParams.get('redirectTo');
-
-    if (redirectUrl === null || redirectUrl.includes('login')) {
-      return <Navigate to={'/'}/>;
-    } else {
-      return <Navigate to={redirectUrl}/>;
-    }
-  }
+  const state = store.getState()
 
   const handleUsername = (username) => {
     setUsername(username);
@@ -29,18 +21,9 @@ const LoginComponent = ({dispatch, authedUser}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('username: ' + username);
-    console.log('password: ' + password);
-
-    const state = store.getState()
-
-    console.log('the store state: ');
-    console.log(state);
-
-    if (state.authedUser !== null) {
+    if (username !== '' && password !== '') {
       store.dispatch(setAuthedUser(username));
-      setUsername('');
-      setPassword('');
+      navigate('/');
     }
   };
 

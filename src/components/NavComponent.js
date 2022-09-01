@@ -20,7 +20,7 @@ const NavComponent = () => {
           <Link to="/new-poll">New poll</Link>
         </li>
         <li>
-          <Link to="/" onClick={dispatch(store.dispatch(logoutAuthedUser()))}>Logout</Link>
+          <Link to="/" onClick={() => {dispatch(store.dispatch(logoutAuthedUser()))}}>Logout</Link>
         </li>
       </ul>
     </nav>
